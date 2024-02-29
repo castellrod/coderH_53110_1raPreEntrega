@@ -2,18 +2,18 @@
 
 const express = require('express');
 const productRoutes = require('./routes/productRoutes');
-const cartRoutes = require('./routes/cartRoutes');
+//const cartRoutes = require('./routes/cartRoutes');
 
 /*import express from 'express';
 import { router as usuariosRouter } from './routes/usuarios.router.js';*/
 
-const PORT=3000;
+//const PORT=3000;
 
 const app=express();
-//const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+//app.use(express.urlencoded({extended:true}));
 
 //app.use("/api/usuarios", usuariosRouter)
 
@@ -26,8 +26,12 @@ app.use('/api/carts', cartRoutes);*/
 app.get('/',(req,res)=>{
     res.setHeader('Content-Type','text/plain');
     res.status(200).send('OK');
+    res.send('Ha entrado exitosamente al server...!!!')
 })
 
+app.get('*', (req, res) => {
+    res.send('Error 404 - Not Found')
+})
 
 const server=app.listen(PORT,()=>{
     console.log(`Server escuchando en puerto ${PORT}`);

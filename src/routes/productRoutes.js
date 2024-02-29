@@ -8,9 +8,9 @@ import __dirname from '../utils.js'*/
 
 const express = require('express');
 const router = express.Router();
-const ProductManager = require('../data/product_manager.js');
+const ProductManager = require('../productManager.js');
 
-const productManager = new ProductManager('products.json');
+const productManager = new ProductManager('./data/products.json');
 
 //export const router=Router()
 
@@ -74,9 +74,9 @@ router.get('/:pid', (req, res) => {
     }
 });
 
-router.get("/:id", (req, res)=>{
+/*router.get("/:id", (req, res)=>{
 
-    let id=Number(req.params.id) // porque el id de mi DB es numérico... no siempre se hacer la transform...
+    let id=Number(req.params.id) 
     if(isNaN(id)){
         return res.status(400).json({error:"id debe ser numérico"})
     }
@@ -90,7 +90,7 @@ router.get("/:id", (req, res)=>{
     res.setHeader('Content-Type','application/json');
     return res.status(200).json({usuario});
 
-})
+})*/
 
 
 
